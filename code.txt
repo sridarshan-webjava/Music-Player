@@ -1,0 +1,86 @@
+function loadSong(){
+    setTimer(audio.currentTime,startTime);
+    setTimer(audio.duration,totalDuration);
+}
+
+loadSong();
+
+function setFormat(sec,min,hrs,ele){
+    let secondsFormat = `${sec}`;
+
+    if(sec <= 9){
+        secondsFormat = `0${sec}`;
+    }
+
+    let time;
+
+    if(hrs !== 0){
+        time = `${hrs}:${min}:${secondsFormat}`;
+    }
+    else{
+        time = `${min}:${secondsFormat}`;
+    }
+
+    ele.innerHTML = time;
+}
+
+function setTimer(time,ele){
+
+    let seconds = time;
+    // console.log(time);
+
+    const hours = Math.floor(seconds/3600);
+    seconds = Math.floor(seconds % 3600);
+
+    const minutes = Math.floor(seconds/60);
+    seconds = Math.floor(seconds % 60);
+
+    setFormat(seconds,minutes,hours,ele);
+}
+
+function setProgress(){
+    // console.log("Inside function");
+    const {duration,currentTime} = audio;
+    // console.log(duration,currentTime);
+    const width = (currentTime/duration)*100;
+    progressBar.style.width = `${width}%`;
+    console.log(progressBar);
+}
+
+function playSong(){
+    const btnIcon = playBtn.querySelector(".fas");
+    btnIcon.classList.remove("fa-play");
+    btnIcon.classList.add("fa-pause");
+
+    audio.play();
+
+    ID = setInterval(()=>{
+        setTimer(audio.currentTime,startTime);
+        // setProgress(audio.currentTime,audio.duration);
+    },1100)
+
+}
+
+function pauseSong(){
+    const btnIcon = playBtn.querySelector(".fas");
+    btnIcon.classList.remove("fa-pause");
+    btnIcon.classList.add("fa-play");
+    clearInterval(ID);
+    audio.pause();
+
+}
+
+function playOrPauseSong(){
+    if(isPlaying){
+        pauseSong();
+        isPlaying = false;
+    }
+    else{
+        playSong();
+        isPlaying = true;
+    }
+}
+
+playBtn.addEventListener("click",playOrPauseSong);
+
+audio.addEventListener("timeupdate",setProgress);

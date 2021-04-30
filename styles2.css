@@ -1,0 +1,43 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+  
+  body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  
+  .progress-container{
+    flex-basis:50%;
+  }
+  
+  .progress-bar{
+    height:0.35rem;
+    border:2px solid;
+    position:relative;
+    cursor:pointer;
+  }
+  
+  
+  .progress{
+    width:0;
+    height:100%;
+    background:blue;
+  }
+  
+  .progress-circle{
+    width:20px;
+    height:20px;
+    background:red;
+    position:absolute;
+    left:0;
+    top:0;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    cursor:pointer;
+    z-index:1;
+  }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Music Player</title>
+</head>
+<body>
+    <audio class="audio" src="" preload="metadata"></audio>
+    <!-- <audio class="audio" src="audio/Energetic Royalty Free Action Sports Background Music No Copyright.mp3"></audio> -->
+    <div class="player-container">
+        <img class="song-image" src="" alt="Song image">
+        <div class="song-details">
+            <h1 class="title"></h1>
+            <p class="artist"></p>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress"></div>
+                <div class="progress-slide"></div>
+            </div>
+            <div class="duration">
+                <p class="time start-time"></p>
+                <p class="time total"></p>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="btn move-track backward"><i class="fas fa-step-backward"></i></button>
+            <button class="btn play"><i class="fas fa-play"></i></button>
+            <button class="btn move-track forward"><i class="fas fa-step-forward"></i></button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
